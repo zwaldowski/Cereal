@@ -218,6 +218,7 @@ private final class LegacyEncodingBox: NSObject, NSCoding {
 // MARK: -
 
 /// A keyed decoder that works on Cocoa archives.
+@available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *)
 public struct CodingUnarchiver: KeyedDecoder {
 
     fileprivate let archiver: NSKeyedUnarchiver
@@ -304,6 +305,7 @@ public struct CodingUnarchiver: KeyedDecoder {
 
 }
 
+@available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *)
 private final class DecodingBox<Value: KeyedSerializable>: NSObject, NSCoding {
 
     let value: Value
@@ -327,6 +329,7 @@ private final class DecodingBox<Value: KeyedSerializable>: NSObject, NSCoding {
 
 // MARK: -
 
+@available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *)
 private extension CodingUnarchiver {
 
     struct Legacy: SequentialDecoder {
@@ -385,6 +388,7 @@ private extension CodingUnarchiver {
 
 }
 
+@available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *)
 private final class LegacyDecodingBox<Value: SequentialSerializable>: NSObject, NSCoding {
 
     let value: Value

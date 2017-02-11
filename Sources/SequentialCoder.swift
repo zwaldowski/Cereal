@@ -399,6 +399,7 @@ extension SequentialDecoder {
     }
 
     /// Deserializes a value of `type` at the current position using Cocoa archival.
+    @available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *)
     public func decode<Value: NSCoding>(_ type: Value.Type) throws -> Value? where Value: NSObject {
         return try decode(Data.self).flatMap { (data) throws -> Value? in
             let unarchiver = NSKeyedUnarchiver(forReadingWith: data)

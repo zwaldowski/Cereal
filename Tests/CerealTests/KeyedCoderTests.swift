@@ -10,6 +10,14 @@ import Cereal
 
 class KeyedCoderTests: XCTestCase {
 
+    static var allTests : [(String, (KeyedCoderTests) -> () throws -> Void)] {
+        return [
+            ("testKeyed", testKeyed),
+            ("testArray", testArray),
+            ("testDictionary", testDictionary),
+        ]
+    }
+
     private let someScalar: UnicodeScalar = "🙈"
 
     func testSingleValueCodableRoundtrip() {
