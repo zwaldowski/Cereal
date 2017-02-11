@@ -18,6 +18,80 @@ public protocol KeyedEncoder {
     func encode<Value: KeyedSerializable>(_ value: Value?, forKey key: String)
     /// Serializes `value` and associates it with `key`.
     func encode<Value: SequentialSerializable & KeyedSerializable>(_ value: Value?, forKey key: String)
+
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: SerializationScalar>(_ values: [Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: Serializable>(_ values: [Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: SequentialSerializable>(_ values: [Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: KeyedSerializable>(_ values: [Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: SequentialSerializable & KeyedSerializable>(_ values: [Value]?, forKey key: String)
+
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: SerializationScalar>(_ values: Set<Value>?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: Serializable>(_ values: Set<Value>?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: SequentialSerializable>(_ values: Set<Value>?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: KeyedSerializable>(_ values: Set<Value>?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Value: SequentialSerializable & KeyedSerializable>(_ values: Set<Value>?, forKey key: String)
+
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SerializationScalar, Value: SerializationScalar>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: Serializable, Value: SerializationScalar>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable, Value: SerializationScalar>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: KeyedSerializable, Value: SerializationScalar>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: SerializationScalar>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SerializationScalar, Value: Serializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: Serializable, Value: Serializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable, Value: Serializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: KeyedSerializable, Value: Serializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: Serializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SerializationScalar, Value: SequentialSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: Serializable, Value: SequentialSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable, Value: SequentialSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: KeyedSerializable, Value: SequentialSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SerializationScalar, Value: KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: Serializable, Value: KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable, Value: KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: KeyedSerializable, Value: KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SerializationScalar, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: Serializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+    /// Serializes `values` and associates them with `key`.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?, forKey key: String)
+
     /// Serializes `value` using Cocoa archival and associates it with `key`.
     func encode<Value: NSCoding>(_ value: Value?, forKey key: String)
     /// Serializes `values` using Cocoa archival and associates them with `key`.
@@ -236,6 +310,80 @@ public protocol KeyedDecoder {
     func decode<Value: KeyedSerializable>(_ type: Value.Type, forKey key: String) throws -> Value?
     /// Deserializes a value of `type` associated with `key`, if any.
     func decode<Value: SequentialSerializable & KeyedSerializable>(_ type: Value.Type, forKey key: String) throws -> Value?
+
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: SerializationScalar>(_ type: Array<Value>.Type, forKey key: String) throws -> [Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: Serializable>(_ type: Array<Value>.Type, forKey key: String) throws -> [Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: SequentialSerializable>(_ type: Array<Value>.Type, forKey key: String) throws -> [Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: KeyedSerializable>(_ type: Array<Value>.Type, forKey key: String) throws -> [Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: SequentialSerializable & KeyedSerializable>(_ type: Array<Value>.Type, forKey key: String) throws -> [Value]?
+
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: SerializationScalar>(_ type: Set<Value>.Type, forKey key: String) throws -> Set<Value>?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: Serializable>(_ type: Set<Value>.Type, forKey key: String) throws -> Set<Value>?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: SequentialSerializable>(_ type: Set<Value>.Type, forKey key: String) throws -> Set<Value>?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: KeyedSerializable>(_ type: Set<Value>.Type, forKey key: String) throws -> Set<Value>?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Value: SequentialSerializable & KeyedSerializable>(_ type: Set<Value>.Type, forKey key: String) throws -> Set<Value>?
+
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SerializationScalar, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: Serializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: KeyedSerializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SerializationScalar, Value: Serializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: Serializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: KeyedSerializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SerializationScalar, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: Serializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: KeyedSerializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SerializationScalar, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: Serializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: KeyedSerializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SerializationScalar, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: Serializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+    /// Deserializes a value of `type` associated with `key`, if any.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type, forKey key: String) throws -> [Key: Value]?
+
     /// Deserializes a value of `type` associated with `key` using Cocoa archival, if any.
     func decode<Value: NSCoding>(_ type: Value.Type, forKey key: String) throws -> Value? where Value: NSObject
     /// Deserializes values of `type` associated with `key` using Cocoa archival, if any.

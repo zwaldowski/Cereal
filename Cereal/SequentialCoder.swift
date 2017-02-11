@@ -18,7 +18,80 @@ public protocol SequentialEncoder {
     func encode<Value: KeyedSerializable>(_ value: Value?)
     /// Serializes `value` at the current position.
     func encode<Value: SequentialSerializable & KeyedSerializable>(_ value: Value?)
-    
+
+    /// Serializes `values` at the current position.
+    func encode<Value: SerializationScalar>(_ values: [Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Value: Serializable>(_ values: [Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Value: SequentialSerializable>(_ values: [Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Value: KeyedSerializable>(_ values: [Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Value: SequentialSerializable & KeyedSerializable>(_ values: [Value]?)
+
+    /// Serializes `values` at the current position.
+    func encode<Value: SerializationScalar>(_ values: Set<Value>?)
+    /// Serializes `values` at the current position.
+    func encode<Value: Serializable>(_ values: Set<Value>?)
+    /// Serializes `values` at the current position.
+    func encode<Value: SequentialSerializable>(_ values: Set<Value>?)
+    /// Serializes `values` at the current position.
+    func encode<Value: KeyedSerializable>(_ values: Set<Value>?)
+    /// Serializes `values` at the current position.
+    func encode<Value: SequentialSerializable & KeyedSerializable>(_ values: Set<Value>?)
+
+    /// Serializes `values` at the current position.
+    func encode<Key: SerializationScalar, Value: SerializationScalar>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: Serializable, Value: SerializationScalar>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable, Value: SerializationScalar>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: KeyedSerializable, Value: SerializationScalar>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: SerializationScalar>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SerializationScalar, Value: Serializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: Serializable, Value: Serializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable, Value: Serializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: KeyedSerializable, Value: Serializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: Serializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SerializationScalar, Value: SequentialSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: Serializable, Value: SequentialSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable, Value: SequentialSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: KeyedSerializable, Value: SequentialSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SerializationScalar, Value: KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: Serializable, Value: KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable, Value: KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: KeyedSerializable, Value: KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SerializationScalar, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: Serializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?)
+    /// Serializes `values` at the current position.
+    func encode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ values: [Key: Value]?)
+
     /// Serializes `value` at the current position.
     func encode<Value: NSCoding>(_ value: Value?)
     /// Serializes `values` at the current position using Cocoa archival.
@@ -235,6 +308,79 @@ public protocol SequentialDecoder {
     /// Deserializes a value of `type` at the current position.
     func decode<Value: SequentialSerializable & KeyedSerializable>(_ type: Value.Type) throws -> Value?
 
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: SerializationScalar>(_ type: Array<Value>.Type) throws -> Array<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: Serializable>(_ type: Array<Value>.Type) throws -> Array<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: SequentialSerializable>(_ type: Array<Value>.Type) throws -> Array<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: KeyedSerializable>(_ type: Array<Value>.Type) throws -> Array<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: SequentialSerializable & KeyedSerializable>(_ type: Array<Value>.Type) throws -> Array<Value>?
+
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: SerializationScalar>(_ type: Set<Value>.Type) throws -> Set<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: Serializable>(_ type: Set<Value>.Type) throws -> Set<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: SequentialSerializable>(_ type: Set<Value>.Type) throws -> Set<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: KeyedSerializable>(_ type: Set<Value>.Type) throws -> Set<Value>?
+    /// Deserializes values of `type` at the current position.
+    func decode<Value: SequentialSerializable & KeyedSerializable>(_ type: Set<Value>.Type) throws -> Set<Value>?
+
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SerializationScalar, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: Serializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: KeyedSerializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: SerializationScalar>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SerializationScalar, Value: Serializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: Serializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: KeyedSerializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: Serializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SerializationScalar, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: Serializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: KeyedSerializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SerializationScalar, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: Serializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: KeyedSerializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SerializationScalar, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: Serializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    /// Deserializes values of `type` at the current position.
+    func decode<Key: SequentialSerializable & KeyedSerializable, Value: SequentialSerializable & KeyedSerializable>(_ type: Dictionary<Key, Value>.Type) throws -> [Key: Value]?
+    
     /// Deserializes a value of `type` at the current position using Cocoa archival.
     func decode<Value: NSCoding>(_ type: Value.Type) throws -> Value? where Value: NSObject
     /// Deserializes values of `type` at the current position using Cocoa archival.
