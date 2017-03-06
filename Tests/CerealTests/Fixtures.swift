@@ -42,7 +42,7 @@ enum ColorChoice: Equatable, SequentialSerializable {
 
     init(from decoder: SequentialDecoder) throws {
         let tag = try decoder.decode(Tag.self)
-        let color = try decoder.decode(UIColor.self)
+        let color = try decoder.decode(Color.self)
 
         switch tag {
         case .red?, nil:
