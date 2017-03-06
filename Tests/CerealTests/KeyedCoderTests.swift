@@ -25,8 +25,11 @@ class KeyedCoderTests: XCTestCase {
         archiver.encode(someScalar, forKey: NSKeyedArchiveRootObjectKey)
         let data = archiver.encodedData
 
-        let unarchiver = CodingUnarchiver(data: data)
-        XCTAssertEqual(someScalar, try unarchiver.decode(UnicodeScalar.self, forKey: NSKeyedArchiveRootObjectKey))
+        if #available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *) {
+            let unarchiver = CodingUnarchiver(data: data)
+
+            XCTAssertEqual(someScalar, try unarchiver.decode(UnicodeScalar.self, forKey: NSKeyedArchiveRootObjectKey))
+        }
     }
 
     private let somePerson1 = Person(fullName: "John Appleseed", favoriteColor: .red, weightClass: .bantham, zodiacSign: .cancer)
@@ -38,8 +41,11 @@ class KeyedCoderTests: XCTestCase {
         archiver.encode(somePerson1, forKey: NSKeyedArchiveRootObjectKey)
         let data = archiver.encodedData
 
-        let unarchiver = CodingUnarchiver(data: data)
-        XCTAssertEqual(somePerson1, try unarchiver.decode(Person.self, forKey: NSKeyedArchiveRootObjectKey))
+        if #available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *) {
+            let unarchiver = CodingUnarchiver(data: data)
+
+            XCTAssertEqual(somePerson1, try unarchiver.decode(Person.self, forKey: NSKeyedArchiveRootObjectKey))
+        }
     }
 
     func testArray() {
@@ -47,12 +53,15 @@ class KeyedCoderTests: XCTestCase {
             somePerson1, somePerson2, somePerson3
         ]
 
-        let archiver = CodingArchiver()
-        archiver.encode(somePeople, forKey: NSKeyedArchiveRootObjectKey)
-        let data = archiver.encodedData
+        if #available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *) {
+            let archiver = CodingArchiver()
+            archiver.encode(somePeople, forKey: NSKeyedArchiveRootObjectKey)
+            let data = archiver.encodedData
+            
+            let unarchiver = CodingUnarchiver(data: data)
 
-        let unarchiver = CodingUnarchiver(data: data)
-        XCTAssertEqual(somePeople, try unarchiver.decode(Array<Person>.self, forKey: NSKeyedArchiveRootObjectKey) ?? [])
+            XCTAssertEqual(somePeople, try unarchiver.decode(Array<Person>.self, forKey: NSKeyedArchiveRootObjectKey) ?? [])
+        }
     }
 
     func testDictionary() {
@@ -62,12 +71,14 @@ class KeyedCoderTests: XCTestCase {
             "Wilkie": somePerson3
         ]
 
-        let archiver = CodingArchiver()
-        archiver.encode(keyedPeople, forKey: NSKeyedArchiveRootObjectKey)
-        let data = archiver.encodedData
+        if #available(macOS 10.11, iOS 9.0, watchOS 2.0, tvOS 9.0, *) {
+            let archiver = CodingArchiver()
+            archiver.encode(keyedPeople, forKey: NSKeyedArchiveRootObjectKey)
+            let data = archiver.encodedData
 
-        let unarchiver = CodingUnarchiver(data: data)
-        XCTAssertEqual(keyedPeople, try unarchiver.decode(Dictionary<String, Person>.self, forKey: NSKeyedArchiveRootObjectKey) ?? [:])
+            let unarchiver = CodingUnarchiver(data: data)
+            XCTAssertEqual(keyedPeople, try unarchiver.decode(Dictionary<String, Person>.self, forKey: NSKeyedArchiveRootObjectKey) ?? [:])
+        }
     }
 
 }
